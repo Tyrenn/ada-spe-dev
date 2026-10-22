@@ -4,14 +4,14 @@ public class Main {
 
 
 	public static int[] mettreAZeroPremierElement(int[] t) { 
-		int[] copy = new int[t.length];
+		// int[] copy = new int[t.length];
 
-		for(int i = 0; i < t.length; i++){
-			copy[i] = t[i];
-		}
+		// for(int i = 0; i < t.length; i++){
+		// 	copy[i] = t[i];
+		// }
 		
-		copy[0] = 0;
-		return copy;
+		t[0] = 0;
+		return t;
 	}
 
 
@@ -77,8 +77,25 @@ public class Main {
 
 		System.out.println(tab[0] + "," + tab2[0]);
 
+		int[] arr = new int[5];
+
+		int[] arr2 = arr;
+
+
+		arr[2] = 0;
+
+		System.out.println(arr2[2]); // 0
+
+
 		String a = "bonjour";
 
-		String b = a;
+		String b = "bonjour";
+
+		b.equals(a);
+
+		System.out.println(a);
+
+		
+
 	}
 }
