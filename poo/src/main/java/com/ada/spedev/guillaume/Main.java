@@ -32,59 +32,36 @@ package com.ada.spedev.guillaume;
  */
 public class Main {
 
+
+
 	public static void main(String[] args) {
+		InstrumentDeMusique idm = new InstrumentDeMusique("Michel");
 
-		Cercle cercle = new Cercle();
-		Carre carre = new Carre();
-
-		Forme[] formes = new Forme[5426];
-		
-		formes[0] = new Carre();
-		formes[1] = new Cercle();
-...
-		double res = 0;
-		
-		for (int i = 0; i < formes.length; i++) {
-			res += formes[i].aire();
-
-			formes
-		}
-
-
-		System.out.println(, );
-
-	}
-}
-
-public interface Forme{
-	double aire();
-}
-
-
-public class Carre implements Forme{	
-	public Cercle(){
-	}
-
-	public double aire(){
-		return 0.0;
-	}
-
-	public void decouper(){
-	
-	}
-}
-
-public class Cercle implements Forme{	
-	public Cercle(){
-	}
-
-	public double aire(){
-		return 0.0;
+		idm.sonPur();
 	}
 }
 
 
-public class Dessin{
 
-	private Forme[] formes;
+public abstract class InstrumentDeMusique {
+
+	private final String proprietaire;   // un état partagé par TOUS les instruments
+	private boolean accorde = false;
+
+	protected InstrumentDeMusique(String proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+	public String getProprietaire() { return proprietaire; }
+
+	public void accorder() { accorde = true; }
+
+	// Méthode abstraite : pas de corps, chaque sous-classe DOIT l'écrire
+	protected abstract String sonPur();
+
+	// Méthode concrète écrite UNE fois pour tous, qui s'appuie sur la méthode abstraite
+	@Override
+	public String jouer() {
+		return accorde ? sonPur() : sonPur() + " (faux !)";
+	}
 }
